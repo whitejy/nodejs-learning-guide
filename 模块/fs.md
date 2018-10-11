@@ -79,6 +79,10 @@ readStream
 
 备注：以下代码，如果文件不存在，则创建文件；如果文件存在，则覆盖文件内容；
 
+【* 注：
+* 不能自动创建文件夹
+* 同步写入不存在回调函数】
+
 异步写入
 
 ```javascript
@@ -105,9 +109,12 @@ try{
 
 ### 通过文件流写入
 
+【* 默认设为关闭。
+* autoClose设为false时，下面的这个close事件不触发。
+* 当在最后使用writeStream.close()关闭时，只能写入前一个字符串，即hello。】
 ```javascript
 var fs = require('fs');
-var writeStream = fs.createWriteStream('./fileForWrite1.txt', 'utf8');
+var writeStream = fs.createWriteStream('./fileForWrite1.txt', {'autoClose':true, 'encoding':'utf8'});
 
 writeStream
     .on('close', function(){  // 已经关闭，不会再有事件抛出
@@ -117,6 +124,7 @@ writeStream
 writeStream.write('hello');
 writeStream.write('world');
 writeStream.end('');
+//writestream.close();
 ```
 
 ### 相对底层的接口
