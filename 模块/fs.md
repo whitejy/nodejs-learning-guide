@@ -148,7 +148,8 @@ writeStream.end('');
 
 ## 文件是否存在
 
-`fs.exists()`已经是`deprecated`状态，现在可以通过下面代码判断文件是否存在。
+`fs.exists()`已经是`deprecated/废弃（原因：回调函数不像其他nodejsAPI那样是err,xx格式，而只是xx）`状态，现在可以通过下面代码判断文件是否存在。
+也可以使用`fs.stat()`判断
 
 ```javascript
 var fs = require('fs');
