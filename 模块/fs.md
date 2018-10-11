@@ -786,6 +786,10 @@ Process finished with exit code 1
 >fs.rmdir(path, callback)
 >fs.rmdirSync(path)
 
+【
+* 只能删除空文件夹
+】
+
 例子如下：
 ```javascript
 var fs = require('fs');
